@@ -1,8 +1,10 @@
-import * as ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Index from "./screens";
 
 const render = () => {
-  ReactDOM.render(<Index />, document.body);
+  const root = createRoot(document.getElementById("root"));
+
+  root.render(<Index />);
 };
 
 export { render };
