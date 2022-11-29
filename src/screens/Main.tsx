@@ -6,7 +6,7 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
-const Index: React.FC = () => {
+const Main: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
@@ -51,4 +51,4 @@ const Index: React.FC = () => {
   );
 };
 
-export default Index;
+export default Main;
