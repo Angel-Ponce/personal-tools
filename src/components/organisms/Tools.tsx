@@ -68,13 +68,8 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
 
   useEffect(() => {
     const filtered = tools
-      .filter(
-        (t) =>
-          filter.trim().length != 0 &&
-          t.name
-            .toLocaleLowerCase()
-            .trim()
-            .includes(filter.toLowerCase().trim())
+      .filter((t) =>
+        t.name.toLocaleLowerCase().trim().includes(filter.toLowerCase().trim())
       )
       .map((t, i) => ({ ...t, focus: i == toolFocused }));
 
