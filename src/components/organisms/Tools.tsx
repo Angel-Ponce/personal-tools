@@ -15,7 +15,7 @@ export interface Tool {
 const Tools: React.FC<{ filter: string }> = ({ filter }) => {
   const [toolFocused, setToolFocused] = useState(-1);
   const [, setScreen] = useAtom(currentScreen);
-  const [, setIsOpenModal] = useAtom(openModal);
+  const [isOpenModal, setIsOpenModal] = useAtom(openModal);
   const [filteredTools, setFilteredTools] = useState<Tool[]>([]);
 
   const tools: Tool[] = [
@@ -48,6 +48,18 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
 
     return () => window.removeEventListener("navigation", handler);
   }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key == "Enter" && isOpenModal) {
+        filteredTools.find((t) => t.focus)?.onClick();
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+
+    return () => window.removeEventListener("keydown", handler);
+  }, [isOpenModal, filteredTools]);
 
   useEffect(() => {
     if (toolFocused >= filteredTools.length) {
