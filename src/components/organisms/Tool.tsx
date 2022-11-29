@@ -7,10 +7,13 @@ const Tool: React.FC<{
   name: string;
   icon: React.ReactNode;
   onClick: () => void;
-}> = ({ name, icon, onClick }) => {
+  focus: boolean;
+}> = ({ name, icon, onClick, focus }) => {
   return (
     <div
-      className="w-full p-3 flex gap-4 rounded-lg items-stretch justify-between hover:bg-gray-100 cursor-pointer transition-colors duration-200"
+      className={`w-full p-3 flex gap-4 rounded-lg items-stretch justify-between hover:bg-gray-100 cursor-pointer transition-colors duration-200 ${
+        focus && "bg-gray-100"
+      }`}
       onClick={onClick}
     >
       <div className="rounded-lg bg-white flex justify-center items-center w-10 h-10 text-[20px]">
