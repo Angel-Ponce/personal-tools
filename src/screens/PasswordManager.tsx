@@ -1,10 +1,20 @@
+import { LockOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import React from "react";
 
-const { Title } = Typography;
+const { Text } = Typography;
 
 const PasswordManager: React.FC = () => {
-  return <Title className="font-bold">Administrador de contraseñas</Title>;
+  return (
+    <div className="w-full">
+      <div className="w-fit flex items-center gap-4">
+        <LockOutlined className="text-[18px]" />
+        <Text className="font-semibold text-lg w-fit text-left">
+          Administrador de contraseñas
+        </Text>
+      </div>
+    </div>
+  );
 };
 
 export default PasswordManager;

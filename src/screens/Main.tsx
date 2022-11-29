@@ -5,7 +5,7 @@ import { Tools } from "$organisms";
 import { SearchOutlined } from "@ant-design/icons";
 import { currentScreen } from "$stores";
 import { useAtom } from "jotai";
-import { PasswordManager } from "$screens/PasswordManager";
+import PasswordManager from "$screens/PasswordManager";
 
 const { Title, Text } = Typography;
 
@@ -34,7 +34,9 @@ const Main: React.FC = () => {
           <Image src={main} width={320} preview={false} />
         </>
       )}
+
       {screen == "password-manager" && <PasswordManager />}
+
       <Modal
         footer={null}
         onCancel={() => setOpenModal(false)}
