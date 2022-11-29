@@ -1,4 +1,4 @@
-import { LockOutlined } from "@ant-design/icons";
+import { HomeOutlined, LockOutlined } from "@ant-design/icons";
 import React from "react";
 import { Tool } from "$organisms";
 import { Divider } from "antd";
@@ -15,6 +15,13 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
   const [, setScreen] = useAtom(currentScreen);
 
   const tools: Tool[] = [
+    {
+      name: "Inicio",
+      icon: <HomeOutlined />,
+      onClick: () => {
+        setScreen("main");
+      },
+    },
     {
       name: "Administrador de contraseñas",
       icon: <LockOutlined />,
