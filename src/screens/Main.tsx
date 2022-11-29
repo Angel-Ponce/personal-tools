@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Typography, Image, Modal, Input } from "antd";
 import main from "$assets/main.png";
 import { Tools } from "$organisms";
-import { SearchOutlined } from "@ant-design/icons";
+import {
+  ArrowDownOutlined,
+  ArrowUpOutlined,
+  EnterOutlined,
+  SearchOutlined,
+  UpOutlined,
+} from "@ant-design/icons";
 import { currentScreen, openModal } from "$stores";
 import { useAtom } from "jotai";
 import PasswordManager from "$screens/PasswordManager";
@@ -59,7 +65,25 @@ const Main: React.FC = () => {
       {screen == "password-manager" && <PasswordManager />}
 
       <Modal
-        footer={null}
+        footer={
+          <>
+            <div className="flex gap-2 items-center">
+              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
+                <ArrowUpOutlined className="text-[14px]" />
+              </div>
+              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
+                <ArrowDownOutlined className="text-[14px]" />
+              </div>
+              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
+                <EnterOutlined className="text-[14px]" />
+              </div>
+              <Text className="text-xs">
+                (Utiliza las flechas para moverte y presiona enter para
+                seleccionar)
+              </Text>
+            </div>
+          </>
+        }
         onCancel={() => setIsOpenModal(false)}
         className="!top-5"
         closable={false}
