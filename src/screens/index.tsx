@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Typography, Image, Modal, Input, InputRef } from "antd";
+import React, { useEffect, useState } from "react";
+import { Typography, Image, Modal, Input } from "antd";
 import main from "$assets/main.png";
+import { Tool } from "$organisms";
 import { SearchOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
@@ -33,7 +34,7 @@ const Index: React.FC = () => {
         open={openModal}
       >
         <div className="w-full h-full min-h-[120px] p-6">
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col gap-2 items-center">
             <Input
               placeholder="Busca herramientas..."
               size="large"
@@ -42,6 +43,7 @@ const Index: React.FC = () => {
               onChange={(e) => setSearch(e.target.value)}
               bordered={false}
             />
+            <Tool></Tool>
           </div>
         </div>
       </Modal>

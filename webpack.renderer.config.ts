@@ -24,6 +24,7 @@ export const rendererConfig: Configuration = {
       $templates: path.resolve(__dirname, "./src/components/templates"),
       $screens: path.resolve(__dirname, "./src/screens"),
       $assets: path.resolve(__dirname, "./src/static"),
+      $organisms: path.resolve(__dirname, "./src/components/organisms"),
     },
   },
 };

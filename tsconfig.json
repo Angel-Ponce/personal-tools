@@ -15,7 +15,8 @@
       "*": ["node_modules/*"],
       "$templates": ["src/components/templates"],
       "$screens/*": ["src/screens/*"],
-      "$assets/*": ["src/static/*"]
+      "$assets/*": ["src/static/*"],
+      "$organisms": ["src/components/organisms"]
     },
     "jsx": "react-jsx"
   },
