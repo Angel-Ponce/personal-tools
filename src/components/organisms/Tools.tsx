@@ -76,10 +76,10 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
             .trim()
             .includes(filter.toLowerCase().trim())
       )
-      .map((t) => ({ ...t, focus: false }));
+      .map((t, i) => ({ ...t, focus: i == toolFocused }));
 
     setFilteredTools(filtered);
-  }, [filter]);
+  }, [filter, toolFocused]);
 
   return (
     <div className="w-full flex flex-col gap-2">
