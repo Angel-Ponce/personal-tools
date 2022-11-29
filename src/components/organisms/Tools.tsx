@@ -1,5 +1,5 @@
 import { HomeOutlined, LockOutlined } from "@ant-design/icons";
-import React from "react";
+import React, { useEffect } from "react";
 import { Tool } from "$organisms";
 import { Divider } from "antd";
 import { currentScreen, openModal } from "$stores";
@@ -14,6 +14,16 @@ export interface Tool {
 const Tools: React.FC<{ filter: string }> = ({ filter }) => {
   const [, setScreen] = useAtom(currentScreen);
   const [, setIsOpenModal] = useAtom(openModal);
+
+  useEffect(() => {
+    const handler = (e: CustomEvent<number>) => {
+      console.log(e.detail);
+    };
+
+    window.addEventListener("navigation", handler);
+
+    return () => window.removeEventListener("navigation", handler);
+  }, []);
 
   const tools: Tool[] = [
     {

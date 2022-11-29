@@ -15,12 +15,33 @@ const Main: React.FC = () => {
   const [screen] = useAtom(currentScreen);
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
+    const handler = (e) => {
       if (e.ctrlKey && e.key == "k") {
-        setIsOpenModal(true);
+        setIsOpenModal((prev) => !prev);
+        return;
       }
-    });
+    };
+
+    window.addEventListener("keydown", handler);
+
+    return () => window.removeEventListener("keydown", handler);
   }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (isOpenModal && /^(ArrowUp|ArrowDown|Tab)$/.test(e.key)) {
+        const increment =
+          e.key == "ArrowUp" ? -1 : e.key == "ArrowDown" ? 1 : 1;
+        window.dispatchEvent(
+          new CustomEvent("navigation", { detail: increment })
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+
+    return () => window.removeEventListener("keydown", handler);
+  }, [isOpenModal]);
 
   return (
     <div className="w-full flex flex-col items-center gap-4">
