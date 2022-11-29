@@ -14,7 +14,8 @@
     "paths": {
       "*": ["node_modules/*"],
       "$templates": ["src/components/templates"],
-      "$screens/*": ["src/screens/*"]
+      "$screens/*": ["src/screens/*"],
+      "$assets/*": ["src/static/*"]
     },
     "jsx": "react-jsx"
   },

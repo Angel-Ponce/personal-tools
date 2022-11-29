@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Image } from "antd";
-import main from "../static/main.gif";
+import main from "$assets/main.png";
 
 const { Title, Text } = Typography;
 
