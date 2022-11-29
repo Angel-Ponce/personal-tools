@@ -12,7 +12,7 @@ const Index: React.FC = () => {
         💡 Utiliza <Text keyboard>ctrl</Text>+<Text keyboard>k</Text> para abrir
         el menú de herramientas disponibles
       </Text>
-      <Image src={main} width={360} />
+      <Image src={main} width={360} preview={false} />
     </div>
   );
 };
