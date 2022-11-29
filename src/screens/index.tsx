@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Image, Modal, Input } from "antd";
 import main from "$assets/main.png";
-import { Tool } from "$organisms";
+import { Tools } from "$organisms";
 import { SearchOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
@@ -43,7 +43,7 @@ const Index: React.FC = () => {
               onChange={(e) => setSearch(e.target.value)}
               bordered={false}
             />
-            <Tool></Tool>
+            <Tools filter={search} />
           </div>
         </div>
       </Modal>

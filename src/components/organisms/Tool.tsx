@@ -10,7 +10,7 @@ const Tool: React.FC<{
 }> = ({ name, icon, onClick }) => {
   return (
     <div
-      className="w-full p-3 flex gap-2 rounded-lg items-stretch justify-between hover:bg-gray-100 cursor-pointer transition-colors duration-200"
+      className="w-full p-3 flex gap-4 rounded-lg items-stretch justify-between hover:bg-gray-100 cursor-pointer transition-colors duration-200"
       onClick={onClick}
     >
       <div className="rounded-lg bg-white flex justify-center items-center w-10 h-10 text-[20px]">
