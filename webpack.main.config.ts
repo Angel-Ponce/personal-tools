@@ -20,6 +20,7 @@ export const mainConfig: Configuration = {
       $screens: path.resolve(__dirname, "./src/screens"),
       $assets: path.resolve(__dirname, "./src/static"),
       $organisms: path.resolve(__dirname, "./src/components/organisms"),
+      $stores: path.resolve(__dirname, "./src/stores"),
     },
   },
 };
