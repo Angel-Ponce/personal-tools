@@ -5,6 +5,7 @@ import { Tools } from "$organisms";
 import { SearchOutlined } from "@ant-design/icons";
 import { currentScreen } from "$stores";
 import { useAtom } from "jotai";
+import { PasswordManager } from "$screens/PasswordManager";
 
 const { Title, Text } = Typography;
 
@@ -33,6 +34,7 @@ const Main: React.FC = () => {
           <Image src={main} width={320} preview={false} />
         </>
       )}
+      {screen == "password-manager" && <PasswordManager />}
       <Modal
         footer={null}
         onCancel={() => setOpenModal(false)}
@@ -40,7 +42,7 @@ const Main: React.FC = () => {
         closable={false}
         open={openModal}
       >
-        <div className="w-full h-full min-h-[100px] p-4">
+        <div className="w-full h-full min-h-[100px]">
           <div className="w-full flex flex-col gap-2 items-center">
             <Input
               placeholder="Busca herramientas..."

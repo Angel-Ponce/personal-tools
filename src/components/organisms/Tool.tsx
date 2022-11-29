@@ -17,7 +17,7 @@ const Tool: React.FC<{
         {icon}
       </div>
       <div className="flex-1 flex items-center">
-        <Text className="font-semibold text-lg" underline>
+        <Text className="font-semibold text-md" underline>
           # {name}
         </Text>
       </div>
