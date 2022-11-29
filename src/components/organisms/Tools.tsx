@@ -68,8 +68,12 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
 
   useEffect(() => {
     const filtered = tools
-      .filter((t) =>
-        t.name.toLocaleLowerCase().trim().includes(filter.toLowerCase().trim())
+      .filter(
+        (t, i) =>
+          t.name
+            .toLocaleLowerCase()
+            .trim()
+            .includes(filter.toLowerCase().trim()) && i < 5
       )
       .map((t, i) => ({ ...t, focus: i == toolFocused }));
 
@@ -79,16 +83,12 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
   return (
     <div className="w-full flex flex-col gap-2">
       {filteredTools.map((t, i) => {
-        if (i <= 5) {
-          return (
-            <div key={t.name}>
-              <Tool {...t} />
-              {i != tools.length - 1 && <Divider className="!m-0 !p-0" />}
-            </div>
-          );
-        }
-
-        return <div key={t.name}></div>;
+        return (
+          <div key={t.name}>
+            <Tool {...t} />
+            {i != tools.length - 1 && <Divider className="!m-0 !p-0" />}
+          </div>
+        );
       })}
     </div>
   );
