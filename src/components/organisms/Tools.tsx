@@ -2,7 +2,7 @@ import { HomeOutlined, LockOutlined } from "@ant-design/icons";
 import React from "react";
 import { Tool } from "$organisms";
 import { Divider } from "antd";
-import { currentScreen } from "$stores";
+import { currentScreen, openModal } from "$stores";
 import { useAtom } from "jotai";
 
 export interface Tool {
@@ -13,6 +13,7 @@ export interface Tool {
 
 const Tools: React.FC<{ filter: string }> = ({ filter }) => {
   const [, setScreen] = useAtom(currentScreen);
+  const [, setIsOpenModal] = useAtom(openModal);
 
   const tools: Tool[] = [
     {
@@ -20,6 +21,7 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
       icon: <HomeOutlined />,
       onClick: () => {
         setScreen("main");
+        setIsOpenModal(false);
       },
     },
     {
@@ -27,6 +29,7 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
       icon: <LockOutlined />,
       onClick: () => {
         setScreen("password-manager");
+        setIsOpenModal(false);
       },
     },
   ];

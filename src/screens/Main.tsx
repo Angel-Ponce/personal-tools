@@ -3,21 +3,21 @@ import { Typography, Image, Modal, Input } from "antd";
 import main from "$assets/main.png";
 import { Tools } from "$organisms";
 import { SearchOutlined } from "@ant-design/icons";
-import { currentScreen } from "$stores";
+import { currentScreen, openModal } from "$stores";
 import { useAtom } from "jotai";
 import PasswordManager from "$screens/PasswordManager";
 
 const { Title, Text } = Typography;
 
 const Main: React.FC = () => {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [isOpenModal, setIsOpenModal] = useAtom(openModal);
   const [search, setSearch] = useState<string>("");
   const [screen] = useAtom(currentScreen);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
       if (e.ctrlKey && e.key == "k") {
-        setOpenModal(true);
+        setIsOpenModal(true);
       }
     });
   }, []);
@@ -39,10 +39,10 @@ const Main: React.FC = () => {
 
       <Modal
         footer={null}
-        onCancel={() => setOpenModal(false)}
+        onCancel={() => setIsOpenModal(false)}
         className="!top-5"
         closable={false}
-        open={openModal}
+        open={isOpenModal}
       >
         <div className="w-full h-full min-h-[100px]">
           <div className="w-full flex flex-col gap-2 items-center">
