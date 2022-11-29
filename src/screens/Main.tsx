@@ -68,14 +68,14 @@ const Main: React.FC = () => {
         footer={
           <>
             <div className="flex gap-2 items-center">
-              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
-                <ArrowUpOutlined className="text-[14px]" />
+              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+                <ArrowUpOutlined className="text-[12px]" />
               </div>
-              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
-                <ArrowDownOutlined className="text-[14px]" />
+              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+                <ArrowDownOutlined className="text-[12px]" />
               </div>
-              <div className="rounded bg-gray-50 border p-1.5 flex justify-center items-center">
-                <EnterOutlined className="text-[14px]" />
+              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+                <EnterOutlined className="text-[12px]" />
               </div>
               <Text className="text-xs">
                 (Utiliza las flechas para moverte y presiona enter para
