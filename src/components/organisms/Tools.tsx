@@ -74,8 +74,6 @@ const Tools: React.FC<{ filter: string }> = ({ filter }) => {
     setFilteredTools((prev) =>
       prev.map((t, i) => ({ ...t, focus: toolFocused == i }))
     );
-
-    console.log(filteredTools);
   }, [toolFocused, filteredTools.length]);
 
   useEffect(() => {

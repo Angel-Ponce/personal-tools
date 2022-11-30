@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Image, Modal, Input } from "antd";
-import main from "$assets/main.png";
+import main from "$assets/images/main.png";
 import { Tools } from "$organisms";
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
   EnterOutlined,
   SearchOutlined,
-  UpOutlined,
 } from "@ant-design/icons";
 import { currentScreen, openModal } from "$stores";
 import { useAtom } from "jotai";
