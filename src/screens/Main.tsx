@@ -54,7 +54,7 @@ const Main: React.FC = () => {
       {screen == "main" && (
         <>
           <Title className="text-center font-bold">Bienvenido</Title>
-          <Text className="text-center text-sm">
+          <Text className="text-center">
             💡 Utiliza <Text keyboard>ctrl</Text>+<Text keyboard>k</Text> para
             abrir el menú de herramientas disponibles
           </Text>
