@@ -16,6 +16,7 @@
       "$templates": ["src/components/templates"],
       "$screens/*": ["src/screens/*"],
       "$assets/*": ["src/static/*"],
+      "$atoms": ["src/components/atoms"],
       "$organisms": ["src/components/organisms"],
       "$stores": ["src/stores"]
     },
