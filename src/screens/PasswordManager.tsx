@@ -27,44 +27,41 @@ const PasswordManager: React.FC = () => {
         <div className="flex justify-end w-full">
           <Button>Nueva</Button>
         </div>
-        <div className="flex flex-col">
-          {passwords.map((p, i) => (
-            <div key={i} className="w-full">
-              <div className="flex items-center justify-between gap-2 p-2">
-                <Text className="flex-1 font-semibold flex gap-2 items-center">
-                  <DryBadge className="!px-2 !py-0 font-normal">2</DryBadge>
-                  {p.name}
-                </Text>
-                <Text className="flex-1">{p.password}</Text>
-                <div className="flex gap-2 items-center">
-                  <Button
-                    icon={<EyeTwoTone className="text-[12px]" />}
-                    size="small"
-                  />
-                  <Button
-                    icon={
-                      <EditTwoTone
-                        className="text-[12px]"
-                        twoToneColor="orange"
-                      />
-                    }
-                    size="small"
-                  />
-                  <Button
-                    icon={
-                      <DeleteTwoTone
-                        className="text-[12px]"
-                        twoToneColor="red"
-                      />
-                    }
-                    size="small"
-                  />
-                </div>
+        {passwords.map((p, i) => (
+          <div key={i} className="w-full">
+            <div className="flex items-center justify-between gap-2 p-2">
+              <Text className="flex-1 font-semibold flex gap-2 items-center">
+                <DryBadge className="!px-2 !py-0 font-normal">2</DryBadge>
+                {p.name}
+              </Text>
+              <Text className="flex-1">{p.password}</Text>
+              <div className="flex gap-2 items-center">
+                <Button
+                  icon={<EyeTwoTone className="text-[12px]" />}
+                  size="small"
+                />
+                <Button
+                  icon={
+                    <EditTwoTone
+                      className="text-[12px]"
+                      twoToneColor="orange"
+                    />
+                  }
+                  size="small"
+                />
+                <Button
+                  icon={
+                    <DeleteTwoTone className="text-[12px]" twoToneColor="red" />
+                  }
+                  size="small"
+                />
               </div>
-              {i != passwords.length - 1 && <Divider className="!m-0 !p-0" />}
             </div>
-          ))}
-        </div>
+            {i != passwords.length - 1 && (
+              <Divider className="!m-0 !p-0 !mt-2" />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
