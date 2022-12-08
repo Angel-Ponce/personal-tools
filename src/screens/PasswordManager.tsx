@@ -1,11 +1,13 @@
 import {
+  CheckCircleTwoTone,
+  CopyTwoTone,
   DeleteTwoTone,
   EditTwoTone,
   EyeInvisibleTwoTone,
   EyeTwoTone,
   LockOutlined,
 } from "@ant-design/icons";
-import { Button, Divider, Typography } from "antd";
+import { Button, Divider, Tooltip, Typography } from "antd";
 import React, { useState } from "react";
 
 import savedPasswords from "$assets/passwords/index.json";
@@ -18,20 +20,39 @@ export interface Password {
   name: string;
   password: string;
   visible: boolean;
+  copied: boolean;
 }
 
 const PasswordManager: React.FC = () => {
   const [passwords, setPasswords] = useState<Password[]>(
-    savedPasswords.passwords.map((p) => ({ ...p, visible: false }))
+    savedPasswords.passwords.map((p) => ({
+      ...p,
+      visible: false,
+      copied: false,
+    }))
   );
 
-  const togglePasswordVisibility = (pwdId: string) => {
+  const togglePasswordVisibility = (pwd: Password) => {
     setPasswords((curr) =>
       curr.map((p) => ({
         ...p,
-        visible: pwdId == p.id ? !p.visible : p.visible,
+        visible: pwd.id == p.id ? !p.visible : p.visible,
       }))
     );
+  };
+
+  const copyPassword = (pwd: Password) => {
+    if (navigator.clipboard) navigator.clipboard.writeText(pwd.password);
+
+    setPasswords((curr) =>
+      curr.map((p) => ({ ...p, copied: pwd.id == p.id ? true : p.copied }))
+    );
+
+    setTimeout(() => {
+      setPasswords((curr) =>
+        curr.map((p) => ({ ...p, copied: pwd.id == p.id ? false : p.copied }))
+      );
+    }, 1000);
   };
 
   return (
@@ -49,13 +70,30 @@ const PasswordManager: React.FC = () => {
         {passwords.map((p, i) => (
           <div key={p.id} className="w-full">
             <div className="flex items-center justify-between gap-2 p-2">
-              <Text className="flex-1 font-semibold flex gap-2 items-center">
+              <div className="flex-1 font-semibold flex gap-2 items-center">
                 <DryBadge className="!px-2 !py-0 font-normal">2</DryBadge>
-                {p.name}
-              </Text>
-              <Text className="flex-1">
-                {p.visible ? p.password : "*".repeat(p.password.length)}
-              </Text>
+                <Text>{p.name}</Text>
+              </div>
+              <div className="flex-1 flex items-center gap-2">
+                <Text>{p.visible ? p.password : "*".repeat(20)}</Text>
+                <Tooltip
+                  title={p.copied ? "Copiado!" : "Copiar"}
+                  placement="right"
+                >
+                  <Button
+                    icon={
+                      p.copied ? (
+                        <CheckCircleTwoTone className="text-[12px]" />
+                      ) : (
+                        <CopyTwoTone className="text-[12px]" />
+                      )
+                    }
+                    size="small"
+                    onClick={() => copyPassword(p)}
+                    type="text"
+                  />
+                </Tooltip>
+              </div>
               <div className="flex gap-2 items-center">
                 <Button
                   icon={
@@ -66,7 +104,7 @@ const PasswordManager: React.FC = () => {
                     )
                   }
                   size="small"
-                  onClick={() => togglePasswordVisibility(p.id)}
+                  onClick={() => togglePasswordVisibility(p)}
                 />
                 <Button
                   icon={
