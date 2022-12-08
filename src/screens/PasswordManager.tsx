@@ -1,6 +1,7 @@
 import {
   DeleteTwoTone,
   EditTwoTone,
+  EyeInvisibleTwoTone,
   EyeTwoTone,
   LockOutlined,
 } from "@ant-design/icons";
@@ -12,8 +13,26 @@ import { DryBadge } from "$atoms";
 
 const { Text } = Typography;
 
+export interface Password {
+  id: string;
+  name: string;
+  password: string;
+  visible: boolean;
+}
+
 const PasswordManager: React.FC = () => {
-  const [passwords, setPasswords] = useState(savedPasswords.passwords);
+  const [passwords, setPasswords] = useState<Password[]>(
+    savedPasswords.passwords.map((p) => ({ ...p, visible: false }))
+  );
+
+  const togglePasswordVisibility = (pwdId: string) => {
+    setPasswords((curr) =>
+      curr.map((p) => ({
+        ...p,
+        visible: pwdId == p.id ? !p.visible : p.visible,
+      }))
+    );
+  };
 
   return (
     <div className="w-full">
@@ -28,17 +47,26 @@ const PasswordManager: React.FC = () => {
           <Button>Nueva</Button>
         </div>
         {passwords.map((p, i) => (
-          <div key={i} className="w-full">
+          <div key={p.id} className="w-full">
             <div className="flex items-center justify-between gap-2 p-2">
               <Text className="flex-1 font-semibold flex gap-2 items-center">
                 <DryBadge className="!px-2 !py-0 font-normal">2</DryBadge>
                 {p.name}
               </Text>
-              <Text className="flex-1">{p.password}</Text>
+              <Text className="flex-1">
+                {p.visible ? p.password : "*".repeat(p.password.length)}
+              </Text>
               <div className="flex gap-2 items-center">
                 <Button
-                  icon={<EyeTwoTone className="text-[12px]" />}
+                  icon={
+                    !p.visible ? (
+                      <EyeTwoTone className="text-[12px]" />
+                    ) : (
+                      <EyeInvisibleTwoTone className="text-[12px]" />
+                    )
+                  }
                   size="small"
+                  onClick={() => togglePasswordVisibility(p.id)}
                 />
                 <Button
                   icon={
