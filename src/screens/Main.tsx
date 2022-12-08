@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Typography, Image, Modal, Input } from "antd";
 import main from "$assets/images/main.png";
 import { Tools } from "$organisms";
+import { DryBadge } from "$atoms";
 import {
   ArrowDownOutlined,
   ArrowUpOutlined,
@@ -67,15 +68,15 @@ const Main: React.FC = () => {
         footer={
           <>
             <div className="flex gap-2 items-center">
-              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+              <DryBadge>
                 <ArrowUpOutlined className="text-[12px]" />
-              </div>
-              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+              </DryBadge>
+              <DryBadge>
                 <ArrowDownOutlined className="text-[12px]" />
-              </div>
-              <div className="rounded bg-gray-50 border border-b-2 border-r-2 p-1 flex justify-center items-center">
+              </DryBadge>
+              <DryBadge>
                 <EnterOutlined className="text-[12px]" />
-              </div>
+              </DryBadge>
               <Text className="text-xs">
                 (Utiliza las flechas para moverte y presiona enter para
                 seleccionar)

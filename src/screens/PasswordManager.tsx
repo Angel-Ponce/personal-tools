@@ -8,6 +8,7 @@ import { Typography } from "antd";
 import React from "react";
 
 import savedPasswords from "$assets/passwords/index.json";
+import { DryBadge } from "$atoms";
 
 const { Text } = Typography;
 
@@ -28,7 +29,7 @@ const PasswordManager: React.FC = () => {
         </div>
         <div className="flex items-center justify-between gap-2 border-y p-2">
           <Text className="flex-1 font-semibold flex gap-2 items-center">
-            <Text code>1</Text>
+            <DryBadge className="!px-2 !py-0 font-normal">2</DryBadge>
             Facebook
           </Text>
           <Text className="flex-1">*************</Text>
