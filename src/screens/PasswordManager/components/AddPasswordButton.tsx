@@ -1,4 +1,4 @@
-import { Button, Modal } from "antd";
+import { Button, Drawer } from "antd";
 import React, { useState } from "react";
 
 const AddPasswordButton: React.FC = () => {
@@ -7,15 +7,16 @@ const AddPasswordButton: React.FC = () => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Nueva</Button>
-      <Modal
+      <Drawer
         title="Nueva contraseña"
         open={isOpen}
-        onCancel={() => setIsOpen(false)}
-        cancelText="Cancelar"
-        okText="Guardar"
+        onClose={() => setIsOpen(false)}
       >
-        Aquí el formulario
-      </Modal>
+        <div className="w-full flex justify-end items-center gap-2">
+          <Button onClick={() => setIsOpen(false)}>Cancelar</Button>
+          <Button type="primary">Guardar</Button>
+        </div>
+      </Drawer>
     </>
   );
 };
