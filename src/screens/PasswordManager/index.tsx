@@ -12,6 +12,7 @@ import React, { useState } from "react";
 
 import savedPasswords from "$assets/passwords/index.json";
 import { DryBadge } from "$atoms";
+import AddPasswordButton from "./components/AddPasswordButton";
 
 const { Text } = Typography;
 
@@ -65,7 +66,7 @@ const PasswordManager: React.FC = () => {
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex justify-end w-full">
-          <Button>Nueva</Button>
+          <AddPasswordButton />
         </div>
         {passwords.map((p, i) => (
           <div key={p.id} className="w-full">
