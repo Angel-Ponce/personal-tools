@@ -1,5 +1,6 @@
 import { Button, Drawer } from "antd";
 import React, { useState } from "react";
+import Form from "./Form";
 
 const AddPasswordButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,7 @@ const AddPasswordButton: React.FC = () => {
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <div className="w-full flex justify-end items-center gap-2">
-          <Button onClick={() => setIsOpen(false)}>Cancelar</Button>
-          <Button type="primary">Guardar</Button>
-        </div>
+        <Form />
       </Drawer>
     </>
   );
